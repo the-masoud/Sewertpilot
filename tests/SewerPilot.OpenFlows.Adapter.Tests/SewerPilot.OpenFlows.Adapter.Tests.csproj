@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.3</LangVersion>
+    <SewerPilotTestHarness>true</SewerPilotTestHarness>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="Fixtures/P16AcceptedProof/*.json" CopyToOutputDirectory="PreserveNewest" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <ProjectReference Include="../../src/SewerPilot.OpenFlows.RuntimeHost/SewerPilot.OpenFlows.RuntimeHost.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="../../src/SewerPilot.OpenFlows.Adapter/SewerPilot.OpenFlows.Adapter.csproj" />
+    <ProjectReference Include="../../src/SewerPilot.Civil3D.Plugin/SewerPilot.Civil3D.Plugin.csproj" />
+    <ProjectReference Include="../../src/SewerPilot.OpenFlows.Compatibility/SewerPilot.OpenFlows.Compatibility.csproj" />
+    <ProjectReference Include="../../src/SewerPilot.OpenFlows.Contracts/SewerPilot.OpenFlows.Contracts.csproj" />
+  </ItemGroup>
+</Project>

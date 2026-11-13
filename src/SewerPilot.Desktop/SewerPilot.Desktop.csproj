@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>SewerPilot</AssemblyName>
+    <RootNamespace>SewerPilot.Desktop</RootNamespace>
+    <LangVersion>12.0</LangVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <StartupObject>SewerPilot.Desktop.Program</StartupObject>
+    <ApplicationTitle>SewerPilot Engineering Beta</ApplicationTitle>
+    <Company>SewerPilot Engineering</Company>
+    <Product>SewerPilot Engineering Beta</Product>
+    <Version>1.1.0-beta.1</Version>
+    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SewerPilot.OpenFlows.RuntimeHost\SewerPilot.OpenFlows.RuntimeHost.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\SewerPilot.OpenFlows.Contracts\SewerPilot.OpenFlows.Contracts.csproj" />
+    <ProjectReference Include="..\SewerPilot.OpenFlows.Compatibility\SewerPilot.OpenFlows.Compatibility.csproj" />
+    <ProjectReference Include="..\SewerPilot.OpenFlows.Adapter\SewerPilot.OpenFlows.Adapter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+</Project>

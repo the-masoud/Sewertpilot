@@ -1,0 +1,10 @@
+# Preserve exact bytes of cryptographically sealed acceptance evidence.
+docs/evidence/remediation-20261021/** text=auto eol=lf
+docs/evidence/p28/** text=auto eol=lf
+docs/evidence/swmm/benchmarks/case[345]* text=auto eol=lf
+docs/evidence/swmm/benchmarks/extended-benchmark-* text=auto eol=lf
+SEWERPILOT_MASTER_ROADMAP_HANDOFF.md text eol=lf
+onlineworkflow.md text eol=lf
+docs/handoffs/20261020-phase-p28-and-milestone5-final-release-handoff.md text eol=lf
+docs/evidence/m3-field-pilot/municipal-field-pilot-report.md text eol=lf
+docs/evidence/p17/20261018-live-02-native-integration/step4-presentation-reporting/final-design-audit-report.md text eol=lf

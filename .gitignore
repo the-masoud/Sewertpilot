@@ -1,0 +1,57 @@
+# SewerPilot .gitignore (minimal, established in P0)
+# Keep build output, IDE/user caches and disposable probes out of version control.
+
+## .NET build output
+bin/
+obj/
+[Bb]uild/
+*.user
+*.suo
+.vs/
+
+## Disposable compatibility probes (P0: none were required; keep ignored if added later)
+tools/probes/**/bin/
+tools/probes/**/obj/
+
+## OS / editor noise
+Thumbs.db
+Desktop.ini
+*.log
+
+## Local development overrides and generated artifacts
+.env.local
+.env.*.local
+/artifacts/
+.engineering-save.lock
+.workbuddy-ai/
+audit.jsonl
+project.json
+stormflow/
+engineering/
+onlineworkflow
+
+## Track the canonical root build configuration; nested build output stays ignored.
+!/build/
+
+## Installer output and staging
+distribution/output/
+distribution/staging/
+
+.agents/
+.codex/
+
+# Keep local credentials and engineering models private.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.stsw*
+*.swg*
+*.sqlite*
+*.mdb
+*.dwh
+*.dwg
+*.dxf

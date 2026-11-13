@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.3</LangVersion>
+    <SewerPilotTestHarness>true</SewerPilotTestHarness>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/SewerPilot.OpenFlows.Contracts/SewerPilot.OpenFlows.Contracts.csproj" />
+    <ProjectReference Include="../../src/SewerPilot.OpenFlows.Compatibility/SewerPilot.OpenFlows.Compatibility.csproj" />
+  </ItemGroup>
+</Project>

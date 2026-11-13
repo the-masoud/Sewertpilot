@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "defaultConfiguration": "Release",
+  "allowedConfigurations": [
+    "Debug",
+    "Release"
+  ],
+  "solution": "SewerPilot.sln",
+  "artifactsDirectory": "artifacts",
+  "allowNoSolution": false,
+  "toolPreference": [
+    "dotnet",
+    "msbuild"
+  ]
+}

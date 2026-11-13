@@ -1,0 +1,20 @@
+# Example only: merge this entry into your chosen local Codex config after verification.
+# It is never installed into or substituted for the existing user configuration by MCP-01.
+[mcp_servers.sewerpilot]
+command = "C:/Users/M.Zeynali/Documents/SewerPilot/src/SewerPilot.Mcp.Server/bin/Release/net48/SewerPilot.Mcp.Server.exe"
+args = []
+enabled_tools = [
+  "sewerpilot_get_project_info",
+  "sewerpilot_get_design_basis_summary",
+  "sewerpilot_compute_rational_runoff",
+  "sewerpilot_compute_gutter_and_inlet",
+  "sewerpilot_size_storm_conduit",
+  "sewerpilot_verify_network_hydraulics",
+  "sewerpilot_execute_end_to_end_storm_pipeline"
+]
+startup_timeout_sec = 10
+tool_timeout_sec = 60
+
+[mcp_servers.sewerpilot.env]
+# Replace with an existing local SewerPilot project directory; do not point to a model file.
+SEWERPILOT_PROJECT_DIR = "C:/SewerPilotProjects/YourProject"
