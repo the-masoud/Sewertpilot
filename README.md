@@ -1,5 +1,7 @@
 # SewerPilot
 
+[![Public Windows CI](https://github.com/the-masoud/Sewertpilot/actions/workflows/public-windows-ci.yml/badge.svg?branch=main)](https://github.com/the-masoud/Sewertpilot/actions/workflows/public-windows-ci.yml)
+
 **A Windows engineering workspace for inspecting sewer and drainage networks, protecting source models, and verifying Bentley hydraulic results.**
 
 ## Overview
@@ -59,7 +61,7 @@ Public test sources include [calculation safety checks](tests/SewerPilot.OpenFlo
 
 These harnesses exercise contract/capability semantics and runtime-selection logic using their existing in-memory fixtures. No assertions are disabled or replaced. CI does not execute the MCP process harness, the Autodesk-dependent adapter harness, private/live tests, native hydraulic calculations, GUI/installer acceptance or engineering design approval. Actual Bentley model operations require a separately installed and licensed compatible runtime and authorized model inputs. No proprietary software is installed by this workflow.
 
-The first hosted execution will establish the CI result; a local build alone is not a CI pass.
+Verified hosted execution: [run 43574232690](https://github.com/the-masoud/Sewertpilot/actions/runs/43574232690), tested commit [`e820934`](https://github.com/the-masoud/Sewertpilot/commit/e8209341ebf70a16c8116a28c24e798609cf98c6), **PASS** on 2026-11-14. SDK 10.0.404 built all nine public projects with zero errors and two existing warnings. Contracts: **12 tests / 77 assertions / 0 failures**; compatibility: **12 tests / 13 assertions / 0 failures**. The initial workflow submission was rejected before any job ran; one focused context correction produced this successful run. These results establish the stated CI scope, not native Bentley or engineering approval.
 
 ## System Requirements
 
