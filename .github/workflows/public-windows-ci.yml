@@ -1,0 +1,64 @@
+name: Public Windows CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  public-build:
+    name: Public build and non-native tests
+    runs-on: windows-2025
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      DOTNET_NOLOGO: 'true'
+      DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+      NUGET_PACKAGES: ${{ runner.temp }}/sewerpilot-nuget
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET 10 SDK
+        id: dotnet
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Select and report the installed SDK
+        env:
+          SELECTED_DOTNET_SDK: ${{ steps.dotnet.outputs.dotnet-version }}
+        run: |
+          # Runner-local selection avoids accidentally using a newer preinstalled SDK.
+          if (Test-Path global.json) { throw 'Review the existing SDK policy before replacing it.' }
+          @{ sdk = @{ version = $env:SELECTED_DOTNET_SDK; rollForward = 'disable' } } |
+            ConvertTo-Json -Depth 3 | Set-Content -Encoding utf8 global.json
+          dotnet --info
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet --list-runtimes
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Build public solution filter
+        run: |
+          dotnet build .\SewerPilot.Public.slnf -c Release --nologo -m:1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Run contracts harness
+        run: |
+          # The existing net8.0 harness runs on the highest installed runtime;
+          # this does not retarget production code or claim native integration.
+          dotnet exec --roll-forward LatestMajor .\tests\SewerPilot.OpenFlows.Contracts.Tests\bin\Release\net8.0\SewerPilot.OpenFlows.Contracts.Tests.dll
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Run compatibility harness
+        run: |
+          & .\tests\SewerPilot.OpenFlows.Compatibility.Tests\bin\x64\Release\net48\SewerPilot.OpenFlows.Compatibility.Tests.exe
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

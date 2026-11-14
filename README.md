@@ -53,6 +53,14 @@ Public test sources include [calculation safety checks](tests/SewerPilot.OpenFlo
 
 **Software Acceptance and Engineering Design Approval are separate tracks.** A software PASS establishes only the behavior and coverage actually tested.
 
+### Public continuous integration
+
+[Public Windows CI](.github/workflows/public-windows-ci.yml) runs on GitHub-hosted `windows-2025` runners for pushes and pull requests to `main`, with read-only repository permissions and a 20-minute job limit. It installs the .NET 10 SDK, builds all nine projects in `SewerPilot.Public.slnf`, then executes the existing contracts and compatibility harnesses. The contracts executable still targets `net8.0`; CI explicitly permits `LatestMajor` runtime roll-forward instead of requiring a separate legacy SDK installation. The compatibility executable runs on .NET Framework 4.8.
+
+These harnesses exercise contract/capability semantics and runtime-selection logic using their existing in-memory fixtures. No assertions are disabled or replaced. CI does not execute the MCP process harness, the Autodesk-dependent adapter harness, private/live tests, native hydraulic calculations, GUI/installer acceptance or engineering design approval. Actual Bentley model operations require a separately installed and licensed compatible runtime and authorized model inputs. No proprietary software is installed by this workflow.
+
+The first hosted execution will establish the CI result; a local build alone is not a CI pass.
+
 ## System Requirements
 
 | Use | Requirements and scope |
