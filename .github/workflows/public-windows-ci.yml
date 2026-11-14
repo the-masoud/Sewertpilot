@@ -20,7 +20,7 @@ jobs:
     env:
       DOTNET_NOLOGO: 'true'
       DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
-      NUGET_PACKAGES: ${{ runner.temp }}/sewerpilot-nuget
+      NUGET_PACKAGES: ${{ github.workspace }}/artifacts/ci-nuget
     steps:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
