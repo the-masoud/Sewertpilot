@@ -463,7 +463,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
 
         private static void P17_Step3_Supervised_Solver_Execution_Controlled_Copy()
         {
-            string repo = @"C:\Users\M.Zeynali\Documents\SewerPilot";
+            string repo = @"C:\Users\Public\Documents\SewerPilot";
             string lessonModelPath = @"C:\Program Files\Bentley\OpenFlows Sewer\Lessons\SewerGEMS\Lesson_1.stsw";
 
             // =========================================================================
@@ -626,7 +626,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
             Check(selection.Status == OpenFlowsRuntimeSelectionStatus.Selected, "OpenFlows runtime selected.");
             var runtime = selection.Candidate;
 
-            string pythonPath = @"C:\Users\M.Zeynali\AppData\Local\Programs\Python\Python312\python.exe";
+            string pythonPath = @"C:\Users\Public\AppData\Local\Programs\Python\Python312\python.exe";
             Check(File.Exists(pythonPath), "Watchdog Python path exists.");
 
             // 3.6 Supervised Runtime Execution
@@ -694,7 +694,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
 
         private static void P17_Step4_Presentation_And_Final_Reporting()
         {
-            string repo = @"C:\Users\M.Zeynali\Documents\SewerPilot";
+            string repo = @"C:\Users\Public\Documents\SewerPilot";
             string lessonModelPath = @"C:\Program Files\Bentley\OpenFlows Sewer\Lessons\SewerGEMS\Lesson_1.stsw";
 
             // =========================================================================
@@ -871,7 +871,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
             var selection = new OpenFlowsRuntimeSelector().Select(discovery, options);
             Check(selection.Status == OpenFlowsRuntimeSelectionStatus.Selected, "OpenFlows runtime selected.");
             var runtime = selection.Candidate;
-            string pythonPath = @"C:\Users\M.Zeynali\AppData\Local\Programs\Python\Python312\python.exe";
+            string pythonPath = @"C:\Users\Public\AppData\Local\Programs\Python\Python312\python.exe";
             Check(File.Exists(pythonPath), "Watchdog Python path exists.");
 
             Console.WriteLine("Executing supervised single-operator solver execution for Step 4...");
@@ -994,7 +994,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
             reportBuilder.AppendLine("**Phase:** P17 (GravityFlow End-to-End Vertical Slice: Steps 1–4)  ");
             reportBuilder.AppendLine("**Date:** " + DateTime.UtcNow.ToString("yyyy-MM-dd") + "  ");
             reportBuilder.AppendLine("**Model Under Test:** `Lesson_1.stsw` (Bentley SewerGEMS / OpenFlows Sewer)  ");
-            reportBuilder.AppendLine("**Repository:** `C:\\Users\\M.Zeynali\\Documents\\SewerPilot`  ");
+            reportBuilder.AppendLine("**Repository:** `C:\\Users\\Public\\Documents\\SewerPilot`  ");
             reportBuilder.AppendLine("**Software workflow:** `PASS`; **Hydraulic acceptance:** `PARTIALLY PROVEN / ENGINEERING DECISION REQUIRED` (unavailable=" + report.NotAvailableCount + ", violations=" + report.ViolationCount + ").  ");
             reportBuilder.AppendLine("**Capability State:** ModelWrite and SolverRun supported; ResultRead has genuine lineage but incomplete field coverage.  ");
             reportBuilder.AppendLine();
@@ -1003,7 +1003,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
             reportBuilder.AppendLine("## 1. Executive Summary & Verification Highlights");
             reportBuilder.AppendLine();
             reportBuilder.AppendLine("This controlled-copy regression preserves the inherited Lesson 1 fixture. Software execution PASS does not certify complete hydraulic coverage or engineer acceptance. All unavailable measurements and violations remain visible below.");
-            reportBuilder.AppendLine("1. **Step 1 — Engineering Authorization:** Formalized controlled overflow policy for Outfalls 25 & 26 (91.00 ft invert), confirmed downhill flow orientations for Conduits 27–35, extracted system criteria from Bentley `Design_SystemData` Alternative 72, and transitioned Design Basis to `Reviewed` with actor `TRC1\\M.Zeynali`.");
+            reportBuilder.AppendLine("1. **Step 1 — Engineering Authorization:** Formalized controlled overflow policy for Outfalls 25 & 26 (91.00 ft invert), confirmed downhill flow orientations for Conduits 27–35, extracted system criteria from Bentley `Design_SystemData` Alternative 72, and transitioned Design Basis to `Reviewed` with actor `TESTONLY\\Public`.");
             reportBuilder.AppendLine("2. **Step 2 — Automated Preparation:** Evaluated P13 Vertical Feasibility (0 conflicts, 0 decision requests, `Feasible`), materialized P14 Candidate Profile (18 endpoints across 9 conduits), and constructed Schema-2 SingleOperator execution plan `da6e7b7df2831b45070a2731788fc32b8058a512f28fadae8a9e74468bddec93` with Conduit 27 StartInvert mutation (103.00 -> 102.80 ft).");
             reportBuilder.AppendLine("3. **Step 3 — Supervised Solver Execution on Controlled Copy:** Cloned baseline to isolated working copy, propagated sub-engine licensing across Bentley `GenericCompositeNumericalEngine` instances, executed Bentley `DelawareProductEngine` (`ScenarioComputeStatus: Success`), read back all 19 elements (9 conduits, 10 structures), and minted `P16ResultContentAuthority`.");
             reportBuilder.AppendLine("4. **Step 4 — Presentation & Reporting:** Surfaced genuine results in GUI presentation surface (`RESULTS_GENUINE`), established complete cryptographic lineage bridge, audited hydraulic findings against explicit criteria (pass=" + report.PassCount + ", violation=" + report.ViolationCount + "), and maintained strict baseline protection with 100% byte-identical verification.");

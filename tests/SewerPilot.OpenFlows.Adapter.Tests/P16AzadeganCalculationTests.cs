@@ -395,7 +395,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
             Throws<InvalidDataException>(() => P16AzadeganCalculationHost.ValidateRequest(new HostRequest
             {
                 SchemaVersion = 1, RunId = new string('c', 32), Operation = P16AzadeganCalculationHost.Operation,
-                WorkingCopyId = copyId, WorkingModelPath = @"C:\Users\M.Zeynali\Documents\SewerPilot\engineering\customer-data\Azadegan\Sanitary_Rev_B00_SourceCopy_20261024\New Model\Oct 26\Azadegab ssw 26.10.25.stsw",
+                WorkingCopyId = copyId, WorkingModelPath = @"C:\Users\Public\Documents\SewerPilot\engineering\customer-data\Azadegan\Sanitary_Rev_B00_SourceCopy_20261024\New Model\Oct 26\Azadegab ssw 26.10.25.stsw",
                 Diagnostics = AzadeganCalculationRequest(copyId, P16AzadeganCalculationHost.PhaseCalculate, false).Diagnostics
             }));
             Throws<InvalidDataException>(() => P16AzadeganCalculationHost.ValidateRequest(AzadeganCalculationRequest(copyId, "WRITE", false)));

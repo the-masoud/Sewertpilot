@@ -31,7 +31,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
                 savedModel = Path.GetFullPath(calc.WorkingModel);
                 WorkingCopyIntegrity.RejectLinks(savedModel);
                 if (!File.Exists(savedModel)) throw new FileNotFoundException("Saved model is absent.");
-                string originalCopy = Path.Combine(@"C:\Users\M.Zeynali\Documents\SewerPilot",
+                string originalCopy = Path.Combine(@"C:\Users\Public\Documents\SewerPilot",
                     @"engineering\customer-data\Farzanegan\SourceCopy_20261027\Model-SewerGEM");
                 originalFamily = P16FarzaneganNativePilotHost.Family.Select(n => Path.Combine(originalCopy,n)).ToArray();
                 before = P16AzadeganCalculationProof.Manifest(originalFamily).ToArray();

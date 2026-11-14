@@ -1,7 +1,7 @@
 # Example only: merge this entry into your chosen local Codex config after verification.
 # It is never installed into or substituted for the existing user configuration by MCP-01.
 [mcp_servers.sewerpilot]
-command = "C:/Users/M.Zeynali/Documents/SewerPilot/src/SewerPilot.Mcp.Server/bin/Release/net48/SewerPilot.Mcp.Server.exe"
+command = "C:/path/to/Sewertpilot/src/SewerPilot.Mcp.Server/bin/Release/net48/SewerPilot.Mcp.Server.exe"
 args = []
 enabled_tools = [
   "sewerpilot_get_project_info",

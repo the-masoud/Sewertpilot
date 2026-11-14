@@ -35,7 +35,7 @@ Existing populated result captures contain private paths or customer-model detai
 4. **Persist and independently reopen.** The runtime saves the working-copy output. A separate process reads persisted results and verifies their provenance against that calculation's recorded identity and inventory.
 5. **Review the outcome.** Inspect available metrics, units, notifications and the evidence receipt. Incomplete or contradictory evidence prevents a clean acceptance. Captured informational notices remain visible; unresolved warnings retain a qualified outcome.
 
-The separate design-change workflow uses **Load engineering inputs â†’ Preview â†’ Confirm â†’ Execute**, with explicit authorization and lineage checks. Its accepted reference execution does not imply universal metric coverage or engineer-approved design changes.
+The separate design-change workflow uses **Load engineering inputs -> Preview -> Confirm -> Execute**, with explicit authorization and lineage checks. Its accepted reference execution does not imply universal metric coverage or engineer-approved design changes.
 
 ## Verification and Testing
 
@@ -45,7 +45,7 @@ The following summarizes **completed local verification**, reused for this docum
 | --- | --- | --- |
 | Offline regression | 13/13 jobs passed: adapter 889 tests / 40,333 assertions; contracts 12 / 77; compatibility 12 / 13; MCP 307 checks, plus nine opt-in safety groups | SW5-T14, 2026-11-05 regression and desktop closeout |
 | Saved-model desktop calculation | PASS: one solve, one save and one separate-process readback; 497/497 available rows in the reader's supported coverage; seven source-family files unchanged | SW1-T02 grid-applicability closeout, 2026-11-05 |
-| Desktop design-plan execution | PASS on the Lesson 1 reference: Preview â†’ Confirm â†’ Execute, persisted changes and fresh-session verification; 27 usable / 64 unavailable metric entries | SW4-T11 desktop closeout, 2026-11-05 |
+| Desktop design-plan execution | PASS on the Lesson 1 reference: Preview -> Confirm -> Execute, persisted changes and fresh-session verification; 27 usable / 64 unavailable metric entries | SW4-T11 desktop closeout, 2026-11-05 |
 | Notification classification | PASS: complete informational notices accepted only with valid solver/persistence/readback evidence; warning, mixed and incomplete cases remain conservative | SW2-T06 acceptance, 2026-11-04 |
 | Internal installation qualification | Same-hash local install, payload verification, startup and uninstall passed; evidence reused for PERSONAL_INTERNAL acceptance | SW5-T16 acceptance, 2026-11-06 |
 
@@ -60,14 +60,14 @@ Public test sources include [calculation safety checks](tests/SewerPilot.OpenFlo
 | Desktop | Windows 10 or 11, 64-bit; .NET Framework 4.8; Windows Forms UI |
 | Bentley model intake and native calculation | Separately installed, licensed compatible Bentley OpenFlows Sewer / SewerGEMS runtime; required model-family files and supported external dependencies |
 | Supervised design-plan execution | Installed Python interpreter for the existing Job Object watchdog; explicit input/confirmation prerequisites |
-| Development | Windows .NET build tooling supporting C# 12 and .NET Framework 4.8 targeting; .NET 8 SDK/runtime for the contracts and compatibility test harnesses; restored project dependencies |
-| Civil 3D integration | Separately installed Autodesk assemblies; the current plugin project contains machine-specific AutoCAD/Civil 3D 2021 reference paths and requires local configuration |
+| Development | Windows .NET CLI supporting C# 12 and .NET Framework 4.8 targeting; verified SDK 10.0.404; .NET 8 runtime for the contracts harness; restored project dependencies |
+| Civil 3D integration | Separately licensed Autodesk assemblies; configure `AutoCADManagedDir` and `Civil3DManagedDir` for the optional full build (excluded from the public filter) |
 
 Bentley compatibility uses discovery and capability checks. No claim of compatibility with every product build, model, engine or external-data configuration is made. Proprietary dependencies are not redistributed.
 
 ## Installation and Getting Started
 
-### Public repository
+### Quick Start / Build from Source
 
 **No public installer release is available in this repository.** The latest local qualification is version `1.1.0-beta.1`, accepted for **PERSONAL_INTERNAL** use on 2026-11-06. It is unsigned; independent clean-workstation qualification and public/external release were not issued.
 
@@ -78,9 +78,21 @@ git clone https://github.com/the-masoud/Sewertpilot.git
 cd Sewertpilot
 ```
 
-The public snapshot is **not yet a complete clean-checkout build**: the solution references two absent projects under `tools/probes/`, and the adapter references an omitted embedded `watchdog.py` resource under the private evidence tree. Full solution/test builds also require local Autodesk references. The maintainer must supply suitable distributable build inputs and dependency configuration before a complete build can be reproduced from this export.
+The public source build now includes the desktop, runtime host, adapter, MCP server, contracts, compatibility layer and three test harnesses without proprietary compile-time assemblies:
 
-The existing [build guide](build/README.md) describes the build entry points, but contains historical P2 assumptions. Current [desktop](src/SewerPilot.Desktop/SewerPilot.Desktop.csproj), [adapter](src/SewerPilot.OpenFlows.Adapter/SewerPilot.OpenFlows.Adapter.csproj) and [MCP](src/SewerPilot.Mcp.Server/SewerPilot.Mcp.Server.csproj) project files define later dependencies. After the missing inputs are supplied and dependencies restored, `tools/build.ps1` and `tools/test.ps1` are the established entry points; they disable automatic restore. Live integration tests additionally require local models and acceptance evidence excluded from this export.
+```powershell
+dotnet build .\SewerPilot.Public.slnf -c Release --nologo -m:1
+```
+
+Use Windows 11 x64, .NET Framework 4.8 targeting assemblies and a current .NET CLI supporting C# 12. This command **passed on 2026-11-14** with SDK 10.0.404 and an initially empty isolated package directory: nine projects, zero errors, two existing warnings. It compiles the selected scope; it does not run tests or qualify native hydraulics. See [public build scope, evidence and remaining dependencies](docs/PUBLIC_BUILD.md) and [contributor setup/test commands](CONTRIBUTING.md).
+
+Launch the compiled workspace with `.\src\SewerPilot.Desktop\bin\Release\net48\SewerPilot.exe`. The desktop shell does not require Bentley to start; supported Bentley model intake and native calculation do require its separately installed, licensed runtime. No newly built application/runtime behavior was exercised in this build-only mission.
+
+The public filter excludes the Autodesk-dependent adapter test harness. Its tests remain in the full solution. The missing optional probe references have been removed, the original watchdog is now included as source with unchanged bytes, and Autodesk paths are explicitly configurable. Historical private evidence/models remain excluded. The existing `tools/build.ps1` and `tools/test.ps1` operate on a broader scope; use the public command above for this checkout.
+
+### Commercial Dependencies
+
+Bentley/OpenFlows and Autodesk remain proprietary, separately licensed products. Native calculations and full adapter-suite qualification need their actual dependencies and authorized inputs; no vendor components are bundled. The requested Bentley 24.0.2.21 configuration was not newly qualified. See [licensing and dependency boundaries](docs/LICENSING.md).
 
 ### For authorized internal-package users
 
@@ -107,15 +119,15 @@ Model fingerprints, isolated execution, persisted-output inventories and indepen
 - Qualification is configuration-specific. Missing terrain, shapefiles, unsupported runtime capabilities or inconsistent result stores can block a workflow.
 - Result coverage varies by workflow. The saved-model reader does not cover outfall result rows; the accepted design-plan reference retained unavailable flow, velocity, depth and HGL observations. A provenance check does not establish complete hydraulic adequacy.
 - Topological start/stop references do not establish approved hydraulic flow orientation. Criteria, boundary conditions and design adoption require explicit engineering decisions.
-- The public export omits private evidence, source models and some build inputs. Historical local acceptance is not a claim that all tests can run from this checkout.
-- No signed public installer or independent clean-workstation qualification is provided. Broader runtime/model qualification, complete distributable build inputs and public release qualification remain future work.
+- The public build covers nine projects; the full adapter harness additionally requires Autodesk assemblies and some live/historical tests require excluded private evidence and models. Public compilation is not proof that those tests pass from this checkout.
+- No signed public installer or independent clean-workstation qualification is provided. Broader runtime/model qualification, independent clean-machine verification and public release qualification remain future work.
 
 ## Contributing
 
 Open an issue with a reproducible problem, affected component and expected behavior. Keep credentials, customer models and unreviewed diagnostic archives out of public issues. For proposed changes, preserve the StormFlow/GravityFlow boundary, isolate Bentley API differences and include focused verification evidence. Never add invented criteria or present synthetic fixtures as native Bentley results.
 
-Resolve the licensing status with the maintainer before assuming permission to reuse or redistribute the code.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, public builds, explicit test commands, pull requests and privacy requirements. Submit only contributions you have the right to license.
 
 ## License
 
-No repository-level LICENSE file is currently provided. This README does not grant a software license or change existing rights. Bentley and Autodesk components remain proprietary and subject to their respective licenses; they are not part of this source distribution.
+Original SewerPilot code and authored project material are licensed under the [Apache License 2.0](LICENSE), as authorized by the maintainer. Third-party packages retain their own licenses and notices. Bentley and Autodesk software, SDKs, model files and trademarks are outside this grant and are not redistributed. See [licensing scope and dependency audit](docs/LICENSING.md).

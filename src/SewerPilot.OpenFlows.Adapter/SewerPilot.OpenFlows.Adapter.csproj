@@ -7,7 +7,7 @@
     <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="../../docs/evidence/p15/controller-recovery-20261008/watchdog.py" LogicalName="SewerPilot.AcceptedRuntimeWatchdog.py" />
+    <EmbeddedResource Include="Runtime/watchdog.py" LogicalName="SewerPilot.AcceptedRuntimeWatchdog.py" />
     <ProjectReference Include="../SewerPilot.OpenFlows.Contracts/SewerPilot.OpenFlows.Contracts.csproj" />
     <ProjectReference Include="../SewerPilot.OpenFlows.Compatibility/SewerPilot.OpenFlows.Compatibility.csproj" />
     <Reference Include="System.Windows.Forms" />

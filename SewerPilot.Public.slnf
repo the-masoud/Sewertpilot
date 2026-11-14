@@ -1,0 +1,16 @@
+{
+  "solution": {
+    "path": "SewerPilot.sln",
+    "projects": [
+      "src/SewerPilot.OpenFlows.Contracts/SewerPilot.OpenFlows.Contracts.csproj",
+      "tests/SewerPilot.OpenFlows.Contracts.Tests/SewerPilot.OpenFlows.Contracts.Tests.csproj",
+      "src/SewerPilot.OpenFlows.Compatibility/SewerPilot.OpenFlows.Compatibility.csproj",
+      "tests/SewerPilot.OpenFlows.Compatibility.Tests/SewerPilot.OpenFlows.Compatibility.Tests.csproj",
+      "src/SewerPilot.OpenFlows.Adapter/SewerPilot.OpenFlows.Adapter.csproj",
+      "src/SewerPilot.OpenFlows.RuntimeHost/SewerPilot.OpenFlows.RuntimeHost.csproj",
+      "src/SewerPilot.Desktop/SewerPilot.Desktop.csproj",
+      "src/SewerPilot.Mcp.Server/SewerPilot.Mcp.Server.csproj",
+      "tests/SewerPilot.Mcp.Server.Tests/SewerPilot.Mcp.Server.Tests.csproj"
+    ]
+  }
+}

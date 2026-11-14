@@ -1,3 +1,11 @@
+# Public build entry point
+
+Use `dotnet build .\SewerPilot.Public.slnf -c Release --nologo -m:1` from the repository root. See [current public build scope and verification](../docs/PUBLIC_BUILD.md) and [contributor setup](../CONTRIBUTING.md).
+
+The foundation notes below are historical P2 documentation. Their package/framework assumptions do not describe all current projects. The legacy scripts target the full solution; the public filter is the documented build without Autodesk dependencies.
+
+---
+
 # Build and environment foundation
 
 `BuildConfiguration.json` is machine-independent build policy. Schema version 1

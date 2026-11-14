@@ -244,7 +244,7 @@ namespace SewerPilot.OpenFlows.Adapter.Tests
             Throws<InvalidDataException>(() => P16HeadlessResultProofHost.ValidateRequest(reqSample));
 
             var reqReadOnly = P16HeadlessResultProofHost.CreateRequest();
-            reqReadOnly.WorkingModelPath = @"C:\Users\M.Zeynali\AppData\Local\Temp\SewerPilot\OpenFlows\ReadOnly\ec8c3d18e0c4429b8ce2973019786ca8\Lesson_1.stsw";
+            reqReadOnly.WorkingModelPath = @"C:\Users\Public\AppData\Local\Temp\SewerPilot\OpenFlows\ReadOnly\ec8c3d18e0c4429b8ce2973019786ca8\Lesson_1.stsw";
             Throws<InvalidDataException>(() => P16HeadlessResultProofHost.ValidateRequest(reqReadOnly));
 
             Check(P16HeadlessResultProofHost.AuthorizedCopyId == "1b7cf72024f7425799f73738aa6d14e0", "AuthorizedCopyId is locked to disposable instance.");

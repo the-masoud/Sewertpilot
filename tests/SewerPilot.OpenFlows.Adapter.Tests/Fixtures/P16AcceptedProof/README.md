@@ -1,4 +1,4 @@
-These are byte-for-byte copies of the retained request/result from accepted P16 run
+These are public, privacy-redacted copies of the retained request/result from accepted P16 run
 `da674540abae4a40a08d0efb0a7f703e`, referenced by
 `docs/evidence/p16/headless-result-provenance/final-report.md`.
 
@@ -16,3 +16,5 @@ Public JSON deserialization cannot mint a receipt. No archive-import interface i
 The minimal mapping contains only the observed Flow metric. Other metrics remain absent;
 this change does not reinterpret the accepted secondary metrics or numeric-encode Surcharge.
 The application lineage labels in the tests are test identifiers, not engineering decisions.
+
+Public-export change (2026-11-14): personal profile names in recorded paths are replaced with `Public`. Numeric observations, run identifiers and recorded inventories are unchanged. These JSON files are replay fixtures, not byte-identical original acceptance receipts and not executable engineering inputs. The original private receipts remain unchanged.

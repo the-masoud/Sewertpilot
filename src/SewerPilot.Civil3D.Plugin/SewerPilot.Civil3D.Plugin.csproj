@@ -10,25 +10,29 @@
 
   <ItemGroup>
     <Reference Include="accoremgd">
-      <HintPath>C:\Program Files\Autodesk\AutoCAD 2021\accoremgd.dll</HintPath>
+      <HintPath>$(AutoCADManagedDir)\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="acdbmgd">
-      <HintPath>C:\Program Files\Autodesk\AutoCAD 2021\acdbmgd.dll</HintPath>
+      <HintPath>$(AutoCADManagedDir)\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="acmgd">
-      <HintPath>C:\Program Files\Autodesk\AutoCAD 2021\acmgd.dll</HintPath>
+      <HintPath>$(AutoCADManagedDir)\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AecBaseMgd">
-      <HintPath>C:\Program Files\Autodesk\AutoCAD 2021\AecBaseMgd.dll</HintPath>
+      <HintPath>$(AutoCADManagedDir)\AecBaseMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AeccDbMgd">
-      <HintPath>C:\Program Files\Autodesk\AutoCAD 2021\C3D\AeccDbMgd.dll</HintPath>
+      <HintPath>$(Civil3DManagedDir)\AeccDbMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
+  <Target Name="RequireAutodeskSdk" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(AutoCADManagedDir)/accoremgd.dll') Or !Exists('$(AutoCADManagedDir)/acdbmgd.dll') Or !Exists('$(AutoCADManagedDir)/acmgd.dll') Or !Exists('$(AutoCADManagedDir)/AecBaseMgd.dll') Or !Exists('$(Civil3DManagedDir)/AeccDbMgd.dll')"
+           Text="The optional Civil 3D build requires licensed Autodesk managed assemblies. Set AutoCADManagedDir and Civil3DManagedDir; see CONTRIBUTING.md. Use SewerPilot.Public.slnf for the public build without Autodesk." />
+  </Target>
 </Project>
